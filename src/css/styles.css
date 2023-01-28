@@ -10,29 +10,112 @@ body {
   background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
+  padding: 50px 0, 30px;
 }
+.container {
+  position: fixed;
+  z-index: 100;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
 
-#search-box {
+  width: 100%;
+  height: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: rgb(78, 19, 214);
+  opacity: 1;
+}
+.search-form {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
   font: inherit;
-  padding: 8px;
-  max-width: 320px;
-  margin-bottom: 16px;
+  padding: 0, 20px;
+  border: none;
+  border-radius: 2px;
+  overflow: hidden;
+  background-color: #fafafa;
+}
+.fotm_txt {
+  border: none;
+  width: 250px;
+  outline: none;
+  font-size: 20px;
+  padding: 0, 10px;
+  background-color: transparent;
+}
+.fotm_btn {
+  border: none;
+  padding: 0, 20px;
+  background-color: rgb(246, 242, 235);
+}
+.fotm_img {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+  width: 22px;
+  cursor: pointer;
 }
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 10px;
+  justify-content: space-around;
+  max-width: 1600px;
+  margin-top: 30px, auto;
+}
+.gallery-card {
+  max-width: 350px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  box-shadow: 0 3px 4px 0 #cfcdcd;
+
+  transition: opacity 0.15s;
 }
 .gallery-img {
-  height: 200px;
+  display: block;
+  position: relative;
+  width: 350px;
+  height: 294px;
+  overflow: hidden;
 }
 .info {
-  display: inline-flex;
-  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 20%;
 }
 .info-item {
   font-family: inherit;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   font-size: 14px;
   color: #212121;
+}
+.load-more {
+  /* position: fixed;
+  bottom: 0;
+  left: 2%; */
+  /* transform: translate(-0%, -50%) scale(0.7); */
+
+  justify-content: start;
+  align-items: center;
+  padding: 5px 10px;
+  margin: 10px 15px;
+
+  border-radius: 4px;
+  border: none;
+
+  font: inherit;
+  font-size: 25px;
+  color: black;
+
+  background-color: rgb(111, 111, 231);
+  box-shadow: 1 6px 2px 1 rgb(0 40 120 / 35%);
+  cursor: pointer;
 }

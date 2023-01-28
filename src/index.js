@@ -25,20 +25,25 @@ async function onSearch(e) {
   e.preventDefault();
 
   newsApiServise.query = e.currentTarget.elements.searchQuery.value;
+
   if (newsApiServise.query === '') {
-    return Notiflix.Notify.info(`Рядок порожній, введіть слово для пошуку.`);
+    return;
   }
   clearHitsMurkup();
+  newsApiServise.resetPage();
+
   try {
-    await newsApiServise.fetchArticle().then(appendHitsMurkup);
+    const hits = await newsApiServise.fetchArticle();
+    appendHitsMurkup(hits);
+
     if (newsApiServise.totalHits !== 0) {
       Notiflix.Notify.success(
         `Hooray! We found ${newsApiServise.totalHits} images.`
       );
     }
+
     lightboxGallery.refresh();
     loadMoreBtn.show();
-    newsApiServise.updatePage();
     newsApiServise.incrementPage();
     emptyArray();
   } catch (error) {
@@ -51,7 +56,7 @@ async function onSearch(e) {
   // });
 }
 
-function onClickLoadMore() {
+async function onClickLoadMore() {
   if (newsApiServise.query === '') {
     return;
   } else if (newsApiServise.totalHits <= newsApiServise.totalNumberAppeals()) {
@@ -61,7 +66,8 @@ function onClickLoadMore() {
     loadMoreBtn.hide();
     return;
   }
-  newsApiServise.fetchArticle().then(appendHitsMurkup);
+  const hits = await newsApiServise.fetchArticle();
+  appendHitsMurkup(hits);
   lightboxGallery.refresh();
   newsApiServise.incrementPage();
 }
@@ -72,10 +78,10 @@ function clearHitsMurkup() {
   gallery.innerHTML = '';
 }
 function emptyArray() {
-  if (NewsApiServise.totalHits === 0) {
-    Notiflix.Notify.failure(
+  if (newsApiServise.totalHits === 0) {
+    loadMoreBtn.hide();
+    return Notiflix.Notify.failure(
       'Sorry, there are no images matching your search query. Please try again.'
     );
-    loadMoreBtn.hide();
   }
 }

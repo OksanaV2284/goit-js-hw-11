@@ -7,12 +7,13 @@ export default class NewsApiServise {
     this.perPage = 40;
     this.totalHits = 0;
   }
+
   async fetchArticle() {
     const MY_KEY = '33090584-e145dbc56acc5f5d28d190c44';
     const BASE_URL = 'https://pixabay.com/api/';
 
     const response = await axios.get(
-      `${BASE_URL}?key=${MY_KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=${this.perPage}`
+      `${BASE_URL}?key=${MY_KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`
     );
     // console.log(response);
 

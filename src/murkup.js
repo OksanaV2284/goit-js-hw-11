@@ -10,7 +10,7 @@ export default function createMarkupList(hits) {
         comments,
         downloads,
       }) =>
-        `<div class="gallery"> <div class="photo-card">
+        `<div class="gallery"> <div class="gallery-card">
   <a href="${largeImageURL}" class="link" ><img class=gallery-img src="${webformatURL}" alt="${tags}" loading="lazy" /></a>
   <div class="info">
     <p class="info-item">
@@ -42,7 +42,6 @@ export class LoadMoreBtn {
   getRefs(selector) {
     const refs = {};
     refs.button = document.querySelector(selector);
-
     return refs;
   }
 
