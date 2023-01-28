@@ -18,3 +18,21 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+.gallery-img {
+  height: 200px;
+}
+.info {
+  display: inline-flex;
+  gap: 10px;
+}
+.info-item {
+  font-family: inherit;
+  font-size: 14px;
+  color: #212121;
+}
