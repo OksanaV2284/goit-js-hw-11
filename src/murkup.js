@@ -42,6 +42,7 @@ export class LoadMoreBtn {
   getRefs(selector) {
     const refs = {};
     refs.button = document.querySelector(selector);
+
     return refs;
   }
 

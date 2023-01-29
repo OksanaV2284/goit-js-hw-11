@@ -79,6 +79,7 @@ body {
 .gallery-img {
   display: block;
   position: relative;
+  top: 40px;
   width: 350px;
   height: 294px;
   overflow: hidden;

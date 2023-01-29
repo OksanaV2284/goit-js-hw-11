@@ -15,7 +15,6 @@ export default class NewsApiServise {
     const response = await axios.get(
       `${BASE_URL}?key=${MY_KEY}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`
     );
-    // console.log(response);
 
     this.totalHits = response.data.totalHits;
 
@@ -34,6 +33,7 @@ export default class NewsApiServise {
   resetPage() {
     this.page = 1;
   }
+
   get query() {
     return this.searchQuery;
   }

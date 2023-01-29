@@ -24,9 +24,10 @@ loadMoreBtn.refs.button.addEventListener('click', onClickLoadMore);
 async function onSearch(e) {
   e.preventDefault();
 
-  newsApiServise.query = e.currentTarget.elements.searchQuery.value;
+  newsApiServise.query = e.currentTarget.elements.searchQuery.value.trim();
 
   if (newsApiServise.query === '') {
+    Notiflix.Notify.info(`рядок порожній.`);
     return;
   }
   clearHitsMurkup();
@@ -41,7 +42,6 @@ async function onSearch(e) {
         `Hooray! We found ${newsApiServise.totalHits} images.`
       );
     }
-
     lightboxGallery.refresh();
     loadMoreBtn.show();
     newsApiServise.incrementPage();
@@ -49,11 +49,6 @@ async function onSearch(e) {
   } catch (error) {
     console.log(error);
   }
-
-  // newsApiServise.resetPage();
-  // newsApiServise.fetchArticle().then(hits => {
-  //   appendHitsMurkup(hits);
-  // });
 }
 
 async function onClickLoadMore() {
@@ -72,7 +67,7 @@ async function onClickLoadMore() {
   newsApiServise.incrementPage();
 }
 function appendHitsMurkup(hits) {
-  gallery.insertAdjacentHTML('afterbegin', createMarkupList(hits));
+  gallery.insertAdjacentHTML('beforeend', createMarkupList(hits));
 }
 function clearHitsMurkup() {
   gallery.innerHTML = '';
